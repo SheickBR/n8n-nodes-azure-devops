@@ -12,31 +12,37 @@ export const repositoryProperties: INodeProperties[] = [
       },
     },
     options: [
-      {
-        name: 'Create',
-        value: 'create',
-        description: 'Create a repository',
-        action: 'Create a repository',
-      },
-      {
-        name: 'Delete',
-        value: 'delete',
-        description: 'Delete a repository',
-        action: 'Delete a repository',
-      },
-      {
-        name: 'Get',
-        value: 'get',
-        description: 'Get a repository',
-        action: 'Get a repository',
-      },
-      {
-        name: 'List',
-        value: 'list',
-        description: 'List repositories',
-        action: 'List repositories',
-      },
-    ],
+			{
+				name: 'Create',
+				value: 'create',
+				description: 'Create a repository',
+				action: 'Create a repository',
+			},
+			{
+				name: 'Delete',
+				value: 'delete',
+				description: 'Delete a repository',
+				action: 'Delete a repository',
+			},
+			{
+				name: 'Get',
+				value: 'get',
+				description: 'Get a repository',
+				action: 'Get a repository',
+			},
+			{
+				name: 'Get Commits',
+				value: 'get-commits',
+				description: 'Get commits from a repository',
+				action: 'Get commits from a repository',
+			},
+			{
+				name: 'List',
+				value: 'list',
+				description: 'List repositories',
+				action: 'List repositories',
+			},
+		],
     default: 'list',
   },
   {
@@ -46,7 +52,7 @@ export const repositoryProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['repository'],
-        operation: ['get', 'delete'],
+        operation: ['get', 'delete', 'get-commits'],
       },
     },
     default: '',

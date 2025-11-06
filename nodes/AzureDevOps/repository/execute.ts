@@ -3,6 +3,7 @@ import { IRequestOptions } from '../../types';
 import { createRepository } from './create';
 import { deleteRepository } from './delete';
 import { getRepository } from './get';
+import { getCommits } from './getCommits';
 import { listRepositories } from './list';
 
 export async function executeRepository(this: IExecuteFunctions, index: number): Promise<IRequestOptions> {
@@ -15,6 +16,8 @@ export async function executeRepository(this: IExecuteFunctions, index: number):
       return await deleteRepository.call(this, index);
     case 'get':
       return await getRepository.call(this, index);
+    case 'get-commits':
+      return await getCommits.call(this, index);
     case 'list':
       return await listRepositories.call(this, index);
     default:

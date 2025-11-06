@@ -6,4 +6,5 @@ export interface IRequestOptions {
 	body?: object;
 	headers?: Record<string, string>;
 	baseUrl?: string;
+	qs?: Record<string, string | boolean | number | string[]>;
 }

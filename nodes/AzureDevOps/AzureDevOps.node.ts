@@ -14,6 +14,7 @@ import { buildProperties, executeBuild } from './build';
 import { pipelineProperties, executePipeline } from './pipeline';
 import { releaseProperties, executeRelease } from './release';
 import { repositoryProperties, executeRepository } from './repository';
+import { pullRequestProperties, executePullRequest } from './pull-request';
 import { userProperties, executeUser } from './user';
 import { IRequestOptions } from '../types';
 
@@ -42,6 +43,7 @@ export class AzureDevOps implements INodeType {
 					{ name: 'Build', value: 'build' },
 					{ name: 'Pipeline', value: 'pipeline' },
 					{ name: 'Project', value: 'project' },
+					{ name: 'Pull Request', value: 'pullRequest' },
 					{ name: 'Query', value: 'query' },
 					{ name: 'Release', value: 'release' },
 					{ name: 'Repository', value: 'repository' },
@@ -59,7 +61,7 @@ export class AzureDevOps implements INodeType {
 				},
 				displayOptions: {
 					show: {
-						resource: ['workItem', 'query', 'build', 'pipeline', 'release', 'repository'],
+						resource: ['workItem', 'query', 'build', 'pipeline', 'release', 'repository', 'pullRequest'],
 					},
 				},
 				default: '',
@@ -69,6 +71,7 @@ export class AzureDevOps implements INodeType {
 			...buildProperties,
 			...pipelineProperties,
 			...projectProperties,
+			...pullRequestProperties,
 			...queryProperties,
 			...releaseProperties,
 			...repositoryProperties,
@@ -114,6 +117,9 @@ export class AzureDevOps implements INodeType {
 						break;
 					case 'repository':
 						requestOptions = await executeRepository.call(this, i);
+						break;
+					case 'pullRequest':
+						requestOptions = await executePullRequest.call(this, i);
 						break;
 					case 'user':
 						requestOptions = await executeUser.call(this, i);
